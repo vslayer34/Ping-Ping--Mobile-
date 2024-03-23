@@ -24,6 +24,10 @@ window/size/viewport_height=540
 
 project/assembly_name="Ping Ping"
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [rendering]
 
 renderer/rendering_method="mobile"
