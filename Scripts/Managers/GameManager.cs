@@ -1,15 +1,21 @@
 using Godot;
-using System;
 
 public partial class GameManager : Node2D
 {
+    [ExportGroup("Resource Refrences")]
+    [Export]
+    private RES_GameplayEvents _gameplayEvents;
+
     private Vector2 _viewPortSize;
 
 
     public override void _Ready()
     {
-        // Get the view port size at the start of the game
+        // Get the view port size at the start of the game and save it
         _viewPortSize = GetViewportRect().Size;
+        _gameplayEvents.ViewPortSize = _viewPortSize;
+
+        GD.Print(_gameplayEvents.ViewPortSize);
     }
 
 

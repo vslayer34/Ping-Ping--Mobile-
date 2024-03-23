@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c37gc4bm6y7q"]
+
+[ext_resource type="Texture2D" uid="uid://bttn365y7aryk" path="res://icon.svg" id="1_faabb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yaxbp"]
+size = Vector2(40, 122)
+
+[node name="StartPlatform" type="CharacterBody2D"]
+input_pickable = true
+motion_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3125, 0.953125)
+texture = ExtResource("1_faabb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yaxbp")
