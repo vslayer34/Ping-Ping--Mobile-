@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Reflection;
 
-public partial class StartPlatform : CharacterBody2D
+public partial class StartPlatform : AnimatableBody2D
 {
     private bool _isDragged;
 
