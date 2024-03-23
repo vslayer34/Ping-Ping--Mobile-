@@ -12,7 +12,12 @@ config_version=5
 
 config/name="Ping Ping"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://ping-svgrepo-com.svg"
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
 
 [dotnet]
 
