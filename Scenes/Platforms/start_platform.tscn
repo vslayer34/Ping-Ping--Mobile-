@@ -6,10 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yaxbp"]
 size = Vector2(40, 122)
 
-[node name="StartPlatform" type="CharacterBody2D"]
+[node name="StartPlatform" type="AnimatableBody2D" node_paths=PackedStringArray("_collisionShape")]
 input_pickable = true
-motion_mode = 1
 script = ExtResource("1_regku")
+_collisionShape = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3125, 0.953125)
