@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn3xi5ncrooeo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fpv2u"]
+radius = 20.0
+
+[node name="Ball" type="RigidBody2D"]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fpv2u")
