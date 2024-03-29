@@ -14,6 +14,9 @@ public partial class StartPlatform : AnimatableBody2D
     [ExportCategory("Platform properties")]
     [Export]
     private float _horizontalSpeed = 10.0f;
+    
+    [Export]
+    private float _verticalSpeed = 20.0f;
 
     private Vector2 _touchPosition;
 
@@ -30,6 +33,11 @@ public partial class StartPlatform : AnimatableBody2D
     public override void _PhysicsProcess(double delta)
     {
         MoveSideWays((float) delta);
+        if (_isDragged)
+        {
+            // GD.Print($"Is Dragged: {_isDragged}");
+            MoveHorizontally((float) delta);
+        }
     }
 
     public override void _Input(InputEvent @event)
@@ -52,7 +60,6 @@ public partial class StartPlatform : AnimatableBody2D
             {
                 _touchPosition = screenDrag.Relative;
                 // GD.Print($"Is Dragged: {_isDragged}");
-                MoveHorizontally();
             }
 
             // else if (!screenDrag.IsCanceled())
@@ -102,15 +109,18 @@ public partial class StartPlatform : AnimatableBody2D
     /// <summary>
     /// Move According to the finger relative position
     /// </summary>
-    private void MoveHorizontally()
+    private void MoveHorizontally(float delta)
     {
-        if (_touchPosition.Y > 0)
+        if (_touchPosition.Y < 0)
         {
-            // Translate
+            // Translate(Vector2.Up * _verticalSpeed * delta);
+            GlobalPosition += new Vector2((Vector2.Left * _horizontalSpeed * delta).X, (Vector2.Up * _verticalSpeed * delta).Y);
+            GD.Print(Vector2.Up);
         }
-        else if (_touchPosition.Y < 0)
+        else if (_touchPosition.Y > 0)
         {
-
+            // Translate(Vector2.Down * _verticalSpeed * delta);
+            GlobalPosition += new Vector2((Vector2.Left * _horizontalSpeed * delta).X, (Vector2.Down * _verticalSpeed * delta).Y);
         }
     }
 }
