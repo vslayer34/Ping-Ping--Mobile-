@@ -9,6 +9,7 @@ public partial class StartPlatform : AnimatableBody2D
     [ExportGroup("")]
 
     private bool _isDragged;
+    private int _currentDragIndex;
 
     [ExportCategory("Platform properties")]
     [Export]
@@ -37,7 +38,7 @@ public partial class StartPlatform : AnimatableBody2D
 
         if (@event is InputEventScreenTouch screenTouch)
         {
-            if (!screenTouch.Pressed)
+            if (_currentDragIndex == screenTouch.Index && !screenTouch.Pressed)
             {
                 // GD.Print("Finger removed from screen");
                 _isDragged = false;
@@ -47,7 +48,7 @@ public partial class StartPlatform : AnimatableBody2D
 
         if (@event is InputEventScreenDrag screenDrag)
         {
-            if (_isDragged)
+            if (_isDragged && _currentDragIndex == screenDrag.Index)
             {
                 _touchPosition = screenDrag.Relative;
                 // GD.Print($"Is Dragged: {_isDragged}");
@@ -74,6 +75,7 @@ public partial class StartPlatform : AnimatableBody2D
             {
                 GD.Print("Touched inside the sprite");
                 _isDragged = true;
+                _currentDragIndex = touch.Index;
                 // GD.Print($"Is Dragged: {_isDragged}");
                 // _touchPosition = touch.Position;
             }
@@ -104,7 +106,7 @@ public partial class StartPlatform : AnimatableBody2D
     {
         if (_touchPosition.Y > 0)
         {
-            Translate
+            // Translate
         }
         else if (_touchPosition.Y < 0)
         {
