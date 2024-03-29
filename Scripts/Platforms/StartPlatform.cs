@@ -4,9 +4,15 @@ public partial class StartPlatform : AnimatableBody2D
 {
     [ExportGroup("Required Nodes")]
     [Export]
+    private GameplayEventsResource _gameplayEvents;
+
+    [Export]
     private CollisionShape2D _collisionShape;
+    
     private int _collisionShapeIndex;
     [ExportGroup("")]
+
+    //---------------------------------------------------------------------------------------------
 
     private bool _isDragged;
     private int _currentDragIndex;
@@ -115,7 +121,6 @@ public partial class StartPlatform : AnimatableBody2D
         {
             // Translate(Vector2.Up * _verticalSpeed * delta);
             GlobalPosition += new Vector2((Vector2.Left * _horizontalSpeed * delta).X, (Vector2.Up * _verticalSpeed * delta).Y);
-            GD.Print(Vector2.Up);
         }
         else if (_touchPosition.Y > 0)
         {

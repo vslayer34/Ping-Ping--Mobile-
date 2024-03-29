@@ -4,7 +4,7 @@ public partial class GameManager : Node2D
 {
     [ExportGroup("Resource Refrences")]
     [Export]
-    private RES_GameplayEvents _gameplayEvents;
+    private GameplayEventsResource _gameplayEvents;
 
     private Vector2 _viewPortSize;
 
