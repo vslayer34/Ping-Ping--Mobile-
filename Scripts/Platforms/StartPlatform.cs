@@ -12,7 +12,7 @@ public partial class StartPlatform : AnimatableBody2D
 
     [ExportCategory("Platform properties")]
     [Export]
-    private float _speed = 10.0f;
+    private float _horizontalSpeed = 10.0f;
 
     private Vector2 _touchPosition;
 
@@ -29,25 +29,35 @@ public partial class StartPlatform : AnimatableBody2D
     public override void _PhysicsProcess(double delta)
     {
         MoveSideWays((float) delta);
-        // GD.Print(_touchPosition);
     }
 
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
 
+        if (@event is InputEventScreenTouch screenTouch)
+        {
+            if (!screenTouch.Pressed)
+            {
+                // GD.Print("Finger removed from screen");
+                _isDragged = false;
+                // GD.Print($"Is Dragged: {_isDragged}");
+            }
+        }
+
         if (@event is InputEventScreenDrag screenDrag)
         {
             if (_isDragged)
             {
                 _touchPosition = screenDrag.Relative;
-                GD.Print($"Is Dragged: {_isDragged}");
+                // GD.Print($"Is Dragged: {_isDragged}");
+                MoveHorizontally();
             }
 
-            else if (!screenDrag.IsCanceled())
-            {
-                GD.Print("Platform is released");
-            }
+            // else if (!screenDrag.IsCanceled())
+            // {
+            //     GD.Print("Platform is released");
+            // }
         }
     }
 
@@ -64,7 +74,7 @@ public partial class StartPlatform : AnimatableBody2D
             {
                 GD.Print("Touched inside the sprite");
                 _isDragged = true;
-                GD.Print($"Is Dragged: {_isDragged}");
+                // GD.Print($"Is Dragged: {_isDragged}");
                 // _touchPosition = touch.Position;
             }
             // else
@@ -83,12 +93,22 @@ public partial class StartPlatform : AnimatableBody2D
     /// <param name="delta"></param>
     private void MoveSideWays(float delta)
     {
-        Translate(Vector2.Left * _speed * delta);
+        Translate(Vector2.Left * _horizontalSpeed * delta);
     }
 
 
+    /// <summary>
+    /// Move According to the finger relative position
+    /// </summary>
     private void MoveHorizontally()
     {
+        if (_touchPosition.Y > 0)
+        {
+            Translate
+        }
+        else if (_touchPosition.Y < 0)
+        {
 
+        }
     }
 }
