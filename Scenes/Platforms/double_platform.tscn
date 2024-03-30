@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cmejk33ewp04q"]
+
+[node name="DoublePlatform" type="AnimatableBody2D"]

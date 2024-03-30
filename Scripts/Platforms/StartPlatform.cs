@@ -24,6 +24,10 @@ public partial class StartPlatform : AnimatableBody2D
     [Export]
     private float _verticalSpeed = 20.0f;
 
+    private float _platformHeight;
+
+    [ExportCategory("")]
+
     private Vector2 _touchPosition;
 
     //---------------------------------------------------------------------------------------------
@@ -33,7 +37,9 @@ public partial class StartPlatform : AnimatableBody2D
     {
         base._Ready();
         InputEvent += HandlePlayerTouch;
+
         _collisionShapeIndex = _collisionShape.GetIndex();
+        _platformHeight = GetPlatformHeight();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -117,15 +123,26 @@ public partial class StartPlatform : AnimatableBody2D
     /// </summary>
     private void MoveHorizontally(float delta)
     {
-        if (_touchPosition.Y < 0)
+        if (_touchPosition.Y < 0 && GlobalPosition.Y >= (0.0f + _platformHeight / 2))
         {
             // Translate(Vector2.Up * _verticalSpeed * delta);
             GlobalPosition += new Vector2((Vector2.Left * _horizontalSpeed * delta).X, (Vector2.Up * _verticalSpeed * delta).Y);
         }
-        else if (_touchPosition.Y > 0)
+        else if (_touchPosition.Y > 0 && GlobalPosition.Y <= (_gameplayEvents.ViewPortSize.Y - _platformHeight / 2))
         {
             // Translate(Vector2.Down * _verticalSpeed * delta);
             GlobalPosition += new Vector2((Vector2.Left * _horizontalSpeed * delta).X, (Vector2.Down * _verticalSpeed * delta).Y);
         }
+    }
+
+
+    /// <summary>
+    /// Get the platform collider height
+    /// </summary>
+    /// <returns>The height of the platform</returns>
+    private float GetPlatformHeight()
+    {
+        RectangleShape2D shape = _collisionShape.Shape as RectangleShape2D;
+        return shape.Size.Y;
     }
 }
