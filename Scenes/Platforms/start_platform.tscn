@@ -12,8 +12,6 @@ input_pickable = true
 script = ExtResource("1_regku")
 _gameplayEvents = ExtResource("2_m313l")
 _collisionShape = NodePath("CollisionShape2D")
-_horizontalSpeed = 50.0
-_verticalSpeed = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3125, 0.953125)
