@@ -8,6 +8,12 @@ public abstract partial class Platform : AnimatableBody2D
 
     [Export]
     protected CollisionShape2D _collisionShape;
+
+    [Export]
+    protected CompressedTexture2D _platformSprite;
+
+    [Export]
+    protected ColorRect _testColorRect;
     
     protected int _collisionShapeIndex;
     [ExportGroup("")]
@@ -26,6 +32,9 @@ public abstract partial class Platform : AnimatableBody2D
 
     protected float _platformHeight;
 
+    [Export]
+    protected Color _rectColor;
+
     [ExportCategory("")]
 
     protected Vector2 _touchPosition;
@@ -39,6 +48,8 @@ public abstract partial class Platform : AnimatableBody2D
 
         _collisionShapeIndex = _collisionShape.GetIndex();
         _platformHeight = GetPlatformHeight();
+
+        _testColorRect.Size = (_collisionShape.Shape as RectangleShape2D).Size;
     }
 
 
