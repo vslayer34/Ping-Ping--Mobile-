@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://cmejk33ewp04q"]
+[gd_scene load_steps=2 format=3 uid="uid://cmejk33ewp04q"]
+
+[ext_resource type="PackedScene" uid="uid://c37gc4bm6y7q" path="res://Scenes/Platforms/start_platform.tscn" id="1_miyoy"]
 
 [node name="DoublePlatform" type="AnimatableBody2D"]
+
+[node name="RightSide" parent="." instance=ExtResource("1_miyoy")]
+position = Vector2(40, 0)
+_rectColor = Color(0.0509804, 0, 0.858824, 1)
+
+[node name="LeftSide" parent="." node_paths=PackedStringArray("_collisionShape", "_testColorRect") instance=ExtResource("1_miyoy")]
+_collisionShape = NodePath("../RightSide/CollisionShape2D")
+_testColorRect = NodePath("../RightSide/ColorRect")
+_rectColor = Color(0.913725, 0.00784314, 0.105882, 1)

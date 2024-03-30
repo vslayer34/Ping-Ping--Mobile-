@@ -11,7 +11,7 @@ offset_left = -19.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
-color = Color(1, 0.0627451, 0, 1)
+color = Color(0.101961, 0.964706, 0.168627, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fpv2u")
