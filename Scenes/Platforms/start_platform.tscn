@@ -13,6 +13,7 @@ script = ExtResource("1_regku")
 _gameplayEvents = ExtResource("2_m313l")
 _collisionShape = NodePath("CollisionShape2D")
 _testColorRect = NodePath("ColorRect")
+_rectColor = Color(0.494118, 0, 0.317647, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3125, 0.953125)

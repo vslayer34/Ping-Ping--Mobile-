@@ -50,6 +50,7 @@ public abstract partial class Platform : AnimatableBody2D
         _platformHeight = GetPlatformHeight();
 
         _testColorRect.Size = (_collisionShape.Shape as RectangleShape2D).Size;
+        _testColorRect.Color = _rectColor;
     }
 
 
