@@ -4,7 +4,7 @@ public partial class StartPlatform : AnimatableBody2D
 {
     [ExportGroup("Required Nodes")]
     [Export]
-    private GameplayEventsResource _gameplayEvents;
+    private RES_GameplayEvents _gameplayEvents;
 
     [Export]
     private CollisionShape2D _collisionShape;
@@ -26,8 +26,8 @@ public partial class StartPlatform : AnimatableBody2D
 
     private Vector2 _touchPosition;
 
-
     //---------------------------------------------------------------------------------------------
+    
 
     public override void _Ready()
     {

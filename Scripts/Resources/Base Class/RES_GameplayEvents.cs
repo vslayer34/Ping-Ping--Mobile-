@@ -1,7 +1,7 @@
 using Godot;
 
 
-public partial class GameplayEventsResource : Resource
+public partial class RES_GameplayEvents : Resource
 {
     [Export]
     /// <summary>
