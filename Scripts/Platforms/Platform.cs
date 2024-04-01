@@ -11,9 +11,6 @@ public abstract partial class Platform : AnimatableBody2D
 
     [Export]
     protected CompressedTexture2D _platformSprite;
-
-    [Export]
-    protected ColorRect _testColorRect;
     
     protected int _collisionShapeIndex;
     [ExportGroup("")]
@@ -32,9 +29,6 @@ public abstract partial class Platform : AnimatableBody2D
 
     protected float _platformHeight;
 
-    [Export]
-    protected Color _rectColor;
-
     [ExportCategory("")]
 
     protected Vector2 _touchPosition;
@@ -45,12 +39,10 @@ public abstract partial class Platform : AnimatableBody2D
     {
         base._Ready();
         InputEvent += HandlePlayerTouch;
+        GD.Print($"Platform: {_gameplayEvents.ViewPortSize}");
 
-        _collisionShapeIndex = _collisionShape.GetIndex();
-        _platformHeight = GetPlatformHeight();
-
-        _testColorRect.Size = (_collisionShape.Shape as RectangleShape2D).Size;
-        _testColorRect.Color = _rectColor;
+        // _collisionShapeIndex = _collisionShape.GetIndex();
+        // _platformHeight = GetPlatformHeight();
     }
 
 
@@ -94,31 +86,6 @@ public abstract partial class Platform : AnimatableBody2D
         }
     }
 
-    /// <summary>
-    /// Handle the player touch input
-    /// Indicata when the player is touching or releasing the platform
-    /// </summary>
-    protected void HandlePlayerTouch(Node viewport, InputEvent @event, long shapeIdx)
-    {
-        if (@event is InputEventScreenTouch touch)
-        {
-            if (touch.Pressed)
-            {
-                GD.Print("Touched inside the sprite");
-                _isDragged = true;
-                _currentDragIndex = touch.Index;
-                // GD.Print($"Is Dragged: {_isDragged}");
-                // _touchPosition = touch.Position;
-            }
-            // else
-            // {
-            //     GD.Print("Released");
-            //     _isDragged = false;
-            //     GD.Print($"Is Dragged: {_isDragged}");
-            // }
-        }
-    }
-
 
     /// <summary>
     /// Move to the left continuasly
@@ -152,9 +119,35 @@ public abstract partial class Platform : AnimatableBody2D
     /// Get the platform collider height
     /// </summary>
     /// <returns>The height of the platform</returns>
-    private float GetPlatformHeight()
+    protected float GetPlatformHeight()
     {
         RectangleShape2D shape = _collisionShape.Shape as RectangleShape2D;
         return shape.Size.Y;
+    }
+
+
+    /// <summary>
+    /// Handle the player touch input
+    /// Indicata when the player is touching or releasing the platform
+    /// </summary>
+    protected void HandlePlayerTouch(Node viewport, InputEvent @event, long shapeIdx)
+    {
+        if (@event is InputEventScreenTouch touch)
+        {
+            if (touch.Pressed)
+            {
+                GD.Print("Touched inside the sprite");
+                _isDragged = true;
+                _currentDragIndex = touch.Index;
+                // GD.Print($"Is Dragged: {_isDragged}");
+                // _touchPosition = touch.Position;
+            }
+            // else
+            // {
+            //     GD.Print("Released");
+            //     _isDragged = false;
+            //     GD.Print($"Is Dragged: {_isDragged}");
+            // }
+        }
     }
 }

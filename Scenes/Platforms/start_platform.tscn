@@ -7,13 +7,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yaxbp"]
 size = Vector2(40, 122)
 
-[node name="StartPlatform" type="AnimatableBody2D" node_paths=PackedStringArray("_collisionShape", "_testColorRect")]
+[node name="StartPlatform" type="AnimatableBody2D" node_paths=PackedStringArray("_testColorRect", "_collisionShape")]
 input_pickable = true
 script = ExtResource("1_regku")
-_gameplayEvents = ExtResource("2_m313l")
-_collisionShape = NodePath("CollisionShape2D")
 _testColorRect = NodePath("ColorRect")
 _rectColor = Color(0.494118, 0, 0.317647, 1)
+_gameplayEvents = ExtResource("2_m313l")
+_collisionShape = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3125, 0.953125)

@@ -15,7 +15,7 @@ public partial class GameManager : Node2D
         _viewPortSize = GetViewportRect().Size;
         _gameplayEvents.ViewPortSize = _viewPortSize;
 
-        GD.Print(_gameplayEvents.ViewPortSize);
+        GD.Print($"Game Manager: {_gameplayEvents.ViewPortSize}");
     }
 
 
