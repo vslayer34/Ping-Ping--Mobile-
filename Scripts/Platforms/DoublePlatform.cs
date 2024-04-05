@@ -8,7 +8,5 @@ public partial class DoublePlatform : Platform
         base._Ready();
 
         _platformHeight = GetPlatformHeight();
-        
-        GD.Print($"Double Platform: {_gameplayEvents.ViewPortSize}");
     }
 }

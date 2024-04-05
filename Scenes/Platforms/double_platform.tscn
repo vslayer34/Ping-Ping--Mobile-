@@ -9,17 +9,17 @@ size = Vector2(80, 124)
 
 [node name="DoublePlatform" type="AnimatableBody2D" node_paths=PackedStringArray("_collisionShape")]
 position = Vector2(-20, 0)
+input_pickable = true
 script = ExtResource("1_opy4a")
 _gameplayEvents = ExtResource("2_21nxd")
 _collisionShape = NodePath("CollisionShape2D")
 
 [node name="RightSide" parent="." instance=ExtResource("1_miyoy")]
 position = Vector2(40, 0)
-_rectColor = Color(0, 0, 0, 0)
+script = null
 
 [node name="LeftSide" parent="." instance=ExtResource("1_miyoy")]
-_rectColor = Color(0, 0, 0, 0)
-_gameplayEvents = null
+script = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(20, 0)

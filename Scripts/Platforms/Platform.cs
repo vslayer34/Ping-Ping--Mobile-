@@ -11,6 +11,9 @@ public abstract partial class Platform : AnimatableBody2D
 
     [Export]
     protected CompressedTexture2D _platformSprite;
+
+    [Export]
+    protected GameManager _gameManager;
     
     protected int _collisionShapeIndex;
     [ExportGroup("")]
@@ -38,11 +41,13 @@ public abstract partial class Platform : AnimatableBody2D
     public override void _Ready()
     {
         base._Ready();
-        InputEvent += HandlePlayerTouch;
-        GD.Print($"Platform: {_gameplayEvents.ViewPortSize}");
 
-        // _collisionShapeIndex = _collisionShape.GetIndex();
-        // _platformHeight = GetPlatformHeight();
+        if (GetOwner<GameManager>() is GameManager)
+        {
+            _gameManager = GetOwner<GameManager>();   
+        }
+
+        InputEvent += HandlePlayerTouch;
     }
 
 
@@ -51,7 +56,6 @@ public abstract partial class Platform : AnimatableBody2D
         MoveSideWays((float) delta);
         if (_isDragged)
         {
-            // GD.Print($"Is Dragged: {_isDragged}");
             MoveHorizontally((float) delta);
         }
     }
@@ -65,9 +69,7 @@ public abstract partial class Platform : AnimatableBody2D
         {
             if (_currentDragIndex == screenTouch.Index && !screenTouch.Pressed)
             {
-                // GD.Print("Finger removed from screen");
                 _isDragged = false;
-                // GD.Print($"Is Dragged: {_isDragged}");
             }
         }
 
@@ -76,13 +78,7 @@ public abstract partial class Platform : AnimatableBody2D
             if (_isDragged && _currentDragIndex == screenDrag.Index)
             {
                 _touchPosition = screenDrag.Relative;
-                // GD.Print($"Is Dragged: {_isDragged}");
             }
-
-            // else if (!screenDrag.IsCanceled())
-            // {
-            //     GD.Print("Platform is released");
-            // }
         }
     }
 
@@ -104,12 +100,10 @@ public abstract partial class Platform : AnimatableBody2D
     {
         if (_touchPosition.Y < 0 && GlobalPosition.Y >= (0.0f + _platformHeight / 2))
         {
-            // Translate(Vector2.Up * _verticalSpeed * delta);
             GlobalPosition += new Vector2((Vector2.Left * _horizontalSpeed * delta).X, (Vector2.Up * _verticalSpeed * delta).Y);
         }
-        else if (_touchPosition.Y > 0 && GlobalPosition.Y <= (_gameplayEvents.ViewPortSize.Y - _platformHeight / 2))
+        else if (_touchPosition.Y > 0 && GlobalPosition.Y <= (_gameManager.ViewPortSize.Y - _platformHeight / 2))
         {
-            // Translate(Vector2.Down * _verticalSpeed * delta);
             GlobalPosition += new Vector2((Vector2.Left * _horizontalSpeed * delta).X, (Vector2.Down * _verticalSpeed * delta).Y);
         }
     }
@@ -125,7 +119,6 @@ public abstract partial class Platform : AnimatableBody2D
         return shape.Size.Y;
     }
 
-
     /// <summary>
     /// Handle the player touch input
     /// Indicata when the player is touching or releasing the platform
@@ -139,15 +132,7 @@ public abstract partial class Platform : AnimatableBody2D
                 GD.Print("Touched inside the sprite");
                 _isDragged = true;
                 _currentDragIndex = touch.Index;
-                // GD.Print($"Is Dragged: {_isDragged}");
-                // _touchPosition = touch.Position;
             }
-            // else
-            // {
-            //     GD.Print("Released");
-            //     _isDragged = false;
-            //     GD.Print($"Is Dragged: {_isDragged}");
-            // }
         }
     }
 }
