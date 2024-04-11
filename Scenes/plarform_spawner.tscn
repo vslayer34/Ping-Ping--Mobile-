@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cogbvuyao3oi6"]
+
+[ext_resource type="Script" path="res://Scripts/Managers/PlarformSpawner.cs" id="1_kc3uo"]
+[ext_resource type="PackedScene" uid="uid://cmejk33ewp04q" path="res://Scenes/Platforms/double_platform.tscn" id="2_cxc44"]
+
+[node name="PlarformSpawner" type="Node2D" node_paths=PackedStringArray("_timer")]
+script = ExtResource("1_kc3uo")
+_timer = NodePath("Timer")
+_newPlatform = ExtResource("2_cxc44")
+_minWaitTime = 4.0
+_maxWaitTime = 8.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
