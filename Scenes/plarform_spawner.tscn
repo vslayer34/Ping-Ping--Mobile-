@@ -1,15 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cogbvuyao3oi6"]
+[gd_scene load_steps=4 format=3 uid="uid://cogbvuyao3oi6"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/PlarformSpawner.cs" id="1_kc3uo"]
 [ext_resource type="PackedScene" uid="uid://cmejk33ewp04q" path="res://Scenes/Platforms/double_platform.tscn" id="2_cxc44"]
+[ext_resource type="PackedScene" uid="uid://c37gc4bm6y7q" path="res://Scenes/Platforms/start_platform.tscn" id="3_81kh0"]
 
-[node name="PlarformSpawner" type="Node2D" node_paths=PackedStringArray("_timer")]
+[node name="PlarformSpawner" type="Node2D" node_paths=PackedStringArray("_timer", "_startPlatformSpawnPoint")]
 script = ExtResource("1_kc3uo")
 _timer = NodePath("Timer")
 _newPlatform = ExtResource("2_cxc44")
+_newStartPlatform = ExtResource("3_81kh0")
+_startPlatformSpawnPoint = NodePath("StartPlatformSpawn")
 _minWaitTime = 4.0
 _maxWaitTime = 8.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0
 autostart = true
+
+[node name="StartPlatformSpawn" type="Marker2D" parent="."]
