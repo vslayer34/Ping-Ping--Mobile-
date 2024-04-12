@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public abstract partial class Platform : AnimatableBody2D
@@ -11,6 +12,7 @@ public abstract partial class Platform : AnimatableBody2D
 
     [Export]
     protected CompressedTexture2D _platformSprite;
+
 
     [Export]
     protected GameManager _gameManager;
@@ -49,7 +51,6 @@ public abstract partial class Platform : AnimatableBody2D
 
         InputEvent += HandlePlayerTouch;
     }
-
 
     public override void _PhysicsProcess(double delta)
     {
