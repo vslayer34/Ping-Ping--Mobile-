@@ -1,17 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://d23lwgaqh775r"]
+[gd_scene load_steps=6 format=3 uid="uid://d23lwgaqh775r"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/GameManager.cs" id="1_3go03"]
 [ext_resource type="Resource" uid="uid://bsl1i5mrmgf5r" path="res://Scripts/Resources/GameEvents.tres" id="2_al7jf"]
 [ext_resource type="Script" path="res://Scripts/Background/Background.cs" id="2_xpcir"]
-[ext_resource type="Script" path="res://Scripts/Resources/Base Class/RES_GameplayEvents.cs" id="5_feq4b"]
 [ext_resource type="PackedScene" uid="uid://dn3xi5ncrooeo" path="res://Scenes/ball.tscn" id="5_v6oui"]
-[ext_resource type="PackedScene" uid="uid://cmejk33ewp04q" path="res://Scenes/Platforms/double_platform.tscn" id="6_5470q"]
 [ext_resource type="PackedScene" uid="uid://cogbvuyao3oi6" path="res://Scenes/plarform_spawner.tscn" id="8_yws8b"]
-
-[sub_resource type="Resource" id="Resource_equla"]
-resource_local_to_scene = true
-script = ExtResource("5_feq4b")
-ViewPortSize = Vector2(0, 0)
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_3go03")
@@ -19,10 +12,6 @@ _gameplayEvents = ExtResource("2_al7jf")
 
 [node name="Background" type="Sprite2D" parent="."]
 script = ExtResource("2_xpcir")
-
-[node name="DoublePlatform" parent="." instance=ExtResource("6_5470q")]
-position = Vector2(909, 269)
-_gameplayEvents = SubResource("Resource_equla")
 
 [node name="Ball" parent="." instance=ExtResource("5_v6oui")]
 position = Vector2(601, 270)

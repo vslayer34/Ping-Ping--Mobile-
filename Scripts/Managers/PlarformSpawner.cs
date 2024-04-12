@@ -80,6 +80,5 @@ public partial class PlarformSpawner : Node2D
         _startPlatformSpawnPoint.AddChild(startPlatform);
 
         startPlatform.Position = _startPlatformSpawnPoint.GlobalPosition;
-        GD.Print($"Start platform spawn position: {startPlatform.GlobalPosition}");
     }
 }
