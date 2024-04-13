@@ -6,6 +6,7 @@
 size = Vector2(45, 555)
 
 [node name="PlatformDestroyer" type="Area2D"]
+collision_layer = 4
 script = ExtResource("1_o1tsu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
