@@ -10,8 +10,10 @@ public partial class PlatformDestroyer : Area2D
     {
         _gameManager = GetOwner<GameManager>();
         _collider = GetNode<CollisionShape2D>("CollisionShape2D");
+        BodyEntered += FreePlatform;
 
         SetUpColliderPosition();
+        
     }
 
 
@@ -33,5 +35,20 @@ public partial class PlatformDestroyer : Area2D
         float rectancleWidth = 50.0f;
         var rectancleShape = _collider.Shape as RectangleShape2D;
         rectancleShape.Size = new Vector2(rectancleWidth, _gameManager.ViewPortSize.Y);
+    }
+
+
+    /// <summary>
+    /// Destroy the platform after leaving the screen
+    /// </summary>
+    /// <param name="body">The platform</param>
+    private void FreePlatform(Node2D body)
+    {
+        if (body is not Platform)
+        {
+            return;
+        }
+
+        body.QueueFree();
     }
 }
