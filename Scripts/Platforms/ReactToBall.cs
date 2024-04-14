@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Godot;
 
 public partial class ReactToBall : Area2D
@@ -8,9 +9,15 @@ public partial class ReactToBall : Area2D
         BodyEntered += HandlePlatformDisapearence;
     }
 
-    private void HandlePlatformDisapearence(Node2D body)
+
+
+    /// <summary>
+    /// Remove the platform once it refelected the ball
+    /// </summary>
+    private async void HandlePlatformDisapearence(Node2D body)
     {
-        GD.Print("Ball hit the platform");
+        await Task.Delay(1000);
+        GD.Print("Ball Found");
     }
 
 }
