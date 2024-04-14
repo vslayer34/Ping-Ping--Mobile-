@@ -46,6 +46,8 @@ public partial class PlarformSpawner : Node2D
         _timer.Timeout += SpawnNewPlatform;
         _viewportSize = GetViewportRect().Size;
 
+
+        // Spawn a start platform and double platform at the start of the game
         SpawnStartPlatform();
     }
 
@@ -80,5 +82,7 @@ public partial class PlarformSpawner : Node2D
         _startPlatformSpawnPoint.AddChild(startPlatform);
 
         startPlatform.Position = _startPlatformSpawnPoint.GlobalPosition;
+
+        CallDeferred("SpawnNewPlatform");
     }
 }
