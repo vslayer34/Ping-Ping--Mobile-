@@ -43,13 +43,12 @@ public abstract partial class Platform : AnimatableBody2D
     public override void _Ready()
     {
         base._Ready();
-
-        if (GetOwner<GameManager>() is GameManager)
-        {
-            _gameManager = GetOwner<GameManager>();   
-        }
-
         InputEvent += HandlePlayerTouch;
+
+        // if (GetOwner<GameManager>() is GameManager)
+        // {
+        //     _gameManager = GetOwner<GameManager>();   
+        // }
     }
 
     public override void _PhysicsProcess(double delta)
