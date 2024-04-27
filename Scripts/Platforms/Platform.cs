@@ -37,6 +37,7 @@ public abstract partial class Platform : AnimatableBody2D
     [ExportCategory("")]
 
     protected Vector2 _touchPosition;
+    public bool IsChildPlatform { get; set; }
 
     //---------------------------------------------------------------------------------------------    
 
@@ -53,10 +54,13 @@ public abstract partial class Platform : AnimatableBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        MoveSideWays((float) delta);
-        if (_isDragged)
+        if (!IsChildPlatform)
         {
-            MoveHorizontally((float) delta);
+            MoveSideWays((float) delta);
+            if (_isDragged)
+            {
+                MoveHorizontally((float) delta);
+            }
         }
     }
 

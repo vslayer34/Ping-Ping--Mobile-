@@ -9,13 +9,14 @@ public partial class Ball : RigidBody2D
         BodyEntered += HandlePlatformDisapearence;
     }
 
-    private async void HandlePlatformDisapearence(Node body)
+    private void HandlePlatformDisapearence(Node body)
     {
-        if (body is Platform platform)
-        {
-            await Task.Delay(1000);
-            platform.QueueFree();
-        }
+        // if (body is AnimatableBody2D platform)
+        // {
+        //     await Task.Delay(1000);
+        //     platform.QueueFree();
+        // }
+        GD.Print(body.Name);
     }
 
 }

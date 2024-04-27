@@ -15,7 +15,7 @@ _gameplayEvents = ExtResource("2_al7jf")
 script = ExtResource("2_xpcir")
 
 [node name="Ball" parent="." instance=ExtResource("5_v6oui")]
-position = Vector2(601, 270)
+position = Vector2(543, 283)
 
 [node name="PlarformSpawner" parent="." node_paths=PackedStringArray("_gameManager") instance=ExtResource("8_yws8b")]
 position = Vector2(1100, 274)
