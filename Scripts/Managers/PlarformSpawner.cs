@@ -38,7 +38,7 @@ public partial class PlarformSpawner : Node2D
 
     //---------------------------------------------------------------------------------------------
 
-    private DoublePlatform _newlyCreatedPlatform;
+    private AnimatableBody2D _newlyCreatedPlatform;
 
 
     public override void _Ready()
@@ -59,7 +59,7 @@ public partial class PlarformSpawner : Node2D
     {
         _timer.WaitTime = GD.RandRange(_minWaitTime, _maxWaitTime);
         
-        _newlyCreatedPlatform = _newPlatform.Instantiate() as DoublePlatform;
+        _newlyCreatedPlatform = _newPlatform.Instantiate() as AnimatableBody2D;
         
         _newlyCreatedPlatform.GlobalPosition = Position;
         _gameManager.AddChild(_newlyCreatedPlatform);

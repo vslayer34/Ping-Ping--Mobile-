@@ -15,15 +15,15 @@ public partial class Ball : RigidBody2D
     private async void HandlePlatformDisapearence(Node body)
     {
         GD.Print("Called");
-        if (body is Platform platform)
+        if (body is AnimatableBody2D platform)
         {
             GD.Print("Before await");
             await ToSignal(GetTree().CreateTimer(1.0f), Timer.SignalName.Timeout);
             GD.Print("After await");
 
-            platform.QueueFree();
+            platform.CallDeferred(MethodName.QueueFree);
+            // platform.QueueFree();
         }
-        GD.Print($"Body Name: {body.Name}");
     }
 
 }

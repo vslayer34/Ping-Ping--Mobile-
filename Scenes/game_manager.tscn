@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d23lwgaqh775r"]
+[gd_scene load_steps=8 format=3 uid="uid://d23lwgaqh775r"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/GameManager.cs" id="1_3go03"]
 [ext_resource type="Resource" uid="uid://bsl1i5mrmgf5r" path="res://Scripts/Resources/GameEvents.tres" id="2_al7jf"]
 [ext_resource type="Script" path="res://Scripts/Background/Background.cs" id="2_xpcir"]
 [ext_resource type="PackedScene" uid="uid://dn3xi5ncrooeo" path="res://Scenes/ball.tscn" id="5_v6oui"]
 [ext_resource type="PackedScene" uid="uid://ccse4uuegq1kn" path="res://Scenes/platform_destroyer.tscn" id="6_d6hsb"]
+[ext_resource type="PackedScene" uid="uid://cmejk33ewp04q" path="res://Scenes/Platforms/double_platform.tscn" id="7_jhweb"]
 [ext_resource type="PackedScene" uid="uid://cogbvuyao3oi6" path="res://Scenes/plarform_spawner.tscn" id="8_yws8b"]
 
 [node name="GameManager" type="Node2D"]
@@ -15,10 +16,22 @@ _gameplayEvents = ExtResource("2_al7jf")
 script = ExtResource("2_xpcir")
 
 [node name="Ball" parent="." instance=ExtResource("5_v6oui")]
-position = Vector2(587, 283)
+position = Vector2(350, 283)
 
 [node name="PlarformSpawner" parent="." node_paths=PackedStringArray("_gameManager") instance=ExtResource("8_yws8b")]
 position = Vector2(1100, 274)
 _gameManager = NodePath("..")
 
 [node name="PlatformDestroyer" parent="." instance=ExtResource("6_d6hsb")]
+
+[node name="DoublePlatform" parent="." instance=ExtResource("7_jhweb")]
+position = Vector2(595, 201)
+
+[node name="DoublePlatform2" parent="." instance=ExtResource("7_jhweb")]
+position = Vector2(619, 335)
+
+[node name="DoublePlatform3" parent="." node_paths=PackedStringArray("LeftPlatform", "RightPlatform", "_collisionShape") instance=ExtResource("7_jhweb")]
+position = Vector2(582, 308)
+LeftPlatform = NodePath("../DoublePlatform2/LeftPlatform")
+RightPlatform = NodePath("../DoublePlatform2/RightPlatform2")
+_collisionShape = NodePath("../DoublePlatform2/CollisionShape2D")

@@ -32,12 +32,13 @@ public abstract partial class Platform : AnimatableBody2D
     [Export]
     protected float _verticalSpeed = 150.0f;
 
-    protected float _platformHeight;
+    [Export]
+    public bool IsChildPlatform { get; set; }
 
+    protected float _platformHeight;
     [ExportCategory("")]
 
     protected Vector2 _touchPosition;
-    public bool IsChildPlatform { get; set; }
 
     //---------------------------------------------------------------------------------------------    
 
@@ -102,11 +103,11 @@ public abstract partial class Platform : AnimatableBody2D
     /// </summary>
     protected void MoveHorizontally(float delta)
     {
-        if (_touchPosition.Y < 0 && GlobalPosition.Y >= (0.0f + _platformHeight / 2))
+        if (_touchPosition.Y <= 0 && GlobalPosition.Y >= (0.0f + _platformHeight / 2))
         {
             GlobalPosition += new Vector2((Vector2.Left * _horizontalSpeed * delta).X, (Vector2.Up * _verticalSpeed * delta).Y);
         }
-        else if (_touchPosition.Y > 0 && GlobalPosition.Y <= (_gameplayEvents.ViewPortSize.Y - _platformHeight / 2))
+        else if (_touchPosition.Y >= 0 && GlobalPosition.Y <= (_gameplayEvents.ViewPortSize.Y - _platformHeight / 2))
         {
             GlobalPosition += new Vector2((Vector2.Left * _horizontalSpeed * delta).X, (Vector2.Down * _verticalSpeed * delta).Y);
         }

@@ -22,7 +22,8 @@ color = Color(0.101961, 0.964706, 0.168627, 1)
 shape = SubResource("CircleShape2D_fpv2u")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 2
+input_pickable = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_fpv2u")
