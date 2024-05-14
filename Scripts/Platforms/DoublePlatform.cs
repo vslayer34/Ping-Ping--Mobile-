@@ -14,7 +14,7 @@ public partial class DoublePlatform : Platform
     {
         base._Ready();
 
-        _platformHeight = GetPlatformHeight();
+        // _platformHeight = GetPlatformHeight();
         LeftPlatform.IsChildPlatform = true;
         RightPlatform.IsChildPlatform = true;
     }
@@ -23,20 +23,20 @@ public partial class DoublePlatform : Platform
     {
         base._PhysicsProcess(delta);
 
-        // KeepPlatformsTogether();
+        KeepPlatformsTogether();
     }
 
 
-    // private void KeepPlatformsTogether()
-    // {
-    //     if (LeftPlatform.Position.Y != RightPlatform.Position.Y)
-    //     {
-    //         LeftPlatform.Position = new Vector2(LeftPlatform.Position.X, RightPlatform.Position.Y);
-    //         // GD.Print($"Right Platform Position: {RightPlatform.Position}");
-    //     }
-    //     else if (RightPlatform.Position.Y != LeftPlatform.Position.Y)
-    //     {
-    //         RightPlatform.Position = new Vector2(RightPlatform.Position.X, LeftPlatform.Position.Y);
-    //     }
-    // }
+    private void KeepPlatformsTogether()
+    {
+        if (LeftPlatform.Position.Y != RightPlatform.Position.Y)
+        {
+            LeftPlatform.Position = new Vector2(LeftPlatform.Position.X, RightPlatform.Position.Y);
+            // GD.Print($"Right Platform Position: {RightPlatform.Position}");
+        }
+        else if (RightPlatform.Position.Y != LeftPlatform.Position.Y)
+        {
+            RightPlatform.Position = new Vector2(RightPlatform.Position.X, LeftPlatform.Position.Y);
+        }
+    }
 }

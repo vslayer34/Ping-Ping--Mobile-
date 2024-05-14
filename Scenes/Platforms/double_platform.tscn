@@ -1,14 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmejk33ewp04q"]
+[gd_scene load_steps=4 format=3 uid="uid://cmejk33ewp04q"]
 
 [ext_resource type="PackedScene" uid="uid://c37gc4bm6y7q" path="res://Scenes/Platforms/start_platform.tscn" id="1_miyoy"]
 [ext_resource type="Script" path="res://Scripts/Platforms/DoublePlatform.cs" id="1_opy4a"]
-[ext_resource type="Resource" uid="uid://bsl1i5mrmgf5r" path="res://Scripts/Resources/GameEvents.tres" id="2_21nxd"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpm4u"]
-size = Vector2(80, 124)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_feq1x"]
-size = Vector2(20, 124)
+[ext_resource type="Resource" uid="uid://bsl1i5mrmgf5r" path="res://Scripts/Resources/GameEvents.tres" id="2_xuj4s"]
 
 [node name="DoublePlatform" type="AnimatableBody2D" node_paths=PackedStringArray("LeftPlatform", "RightPlatform", "_collisionShape")]
 position = Vector2(-20, 0)
@@ -16,28 +10,16 @@ collision_layer = 8
 collision_mask = 0
 input_pickable = true
 script = ExtResource("1_opy4a")
-LeftPlatform = NodePath("CollisionShape2D/LeftSide")
-RightPlatform = NodePath("CollisionShape2D/RightSide")
-_gameplayEvents = ExtResource("2_21nxd")
-_collisionShape = NodePath("CollisionShape2D")
+LeftPlatform = NodePath("LeftSide")
+RightPlatform = NodePath("RightSide")
+_gameplayEvents = ExtResource("2_xuj4s")
+_collisionShape = NodePath("")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(20, 0)
-shape = SubResource("RectangleShape2D_vpm4u")
-
-[node name="RightSide" parent="CollisionShape2D" instance=ExtResource("1_miyoy")]
-position = Vector2(20, 0)
+[node name="RightSide" parent="." instance=ExtResource("1_miyoy")]
+position = Vector2(40, 0)
 input_pickable = false
 _rectColor = Color(0, 0, 0, 0)
-_gameplayEvents = null
 
-[node name="LeftSide" parent="CollisionShape2D" instance=ExtResource("1_miyoy")]
-position = Vector2(-20, 0)
-collision_mask = 0
+[node name="LeftSide" parent="." instance=ExtResource("1_miyoy")]
 input_pickable = false
 _rectColor = Color(0, 0, 0, 0)
-_gameplayEvents = null
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="CollisionShape2D/LeftSide"]
-position = Vector2(-43, 0)
-shape = SubResource("RectangleShape2D_feq1x")

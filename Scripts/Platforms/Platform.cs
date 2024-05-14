@@ -133,7 +133,7 @@ public abstract partial class Platform : AnimatableBody2D
         {
             if (touch.Pressed)
             {
-                GD.Print("Touched inside the sprite");
+                // GD.Print("Touched inside the sprite");
                 _isDragged = true;
                 _currentDragIndex = touch.Index;
             }

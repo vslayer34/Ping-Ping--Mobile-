@@ -64,9 +64,9 @@ public partial class PlarformSpawner : Node2D
         _newlyCreatedPlatform.GlobalPosition = Position;
         _gameManager.AddChild(_newlyCreatedPlatform);
 
-        GD.Print("newly created platform position" + _newlyCreatedPlatform.Position);
-        GD.Print("Spawner position: " + Position);
-        GD.Print("");
+        // GD.Print("newly created platform position" + _newlyCreatedPlatform.Position);
+        // GD.Print("Spawner position: " + Position);
+        // GD.Print("");
     }
 
 

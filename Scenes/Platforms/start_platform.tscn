@@ -1,15 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c37gc4bm6y7q"]
+[gd_scene load_steps=5 format=3 uid="uid://c37gc4bm6y7q"]
 
 [ext_resource type="Texture2D" uid="uid://bttn365y7aryk" path="res://icon.svg" id="1_faabb"]
 [ext_resource type="Script" path="res://Scripts/Platforms/StartPlatform.cs" id="1_regku"]
 [ext_resource type="Resource" uid="uid://bsl1i5mrmgf5r" path="res://Scripts/Resources/GameEvents.tres" id="2_m313l"]
-[ext_resource type="Script" path="res://Scripts/Platforms/ReactToBall.cs" id="4_4k7qu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yaxbp"]
 size = Vector2(40, 122)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjm45"]
-size = Vector2(40, 124)
 
 [node name="StartPlatform" type="AnimatableBody2D" node_paths=PackedStringArray("_testColorRect", "_collisionShape")]
 collision_mask = 2
@@ -33,10 +29,3 @@ mouse_filter = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yaxbp")
-
-[node name="ReactToBall" type="Area2D" parent="."]
-collision_mask = 2
-script = ExtResource("4_4k7qu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ReactToBall"]
-shape = SubResource("RectangleShape2D_vjm45")

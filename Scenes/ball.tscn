@@ -5,11 +5,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_fpv2u"]
 radius = 20.0
 
-[node name="Ball" type="RigidBody2D"]
+[node name="Ball" type="RigidBody2D" node_paths=PackedStringArray("AreaNode")]
 collision_layer = 2
-collision_mask = 9
 gravity_scale = 0.0
 script = ExtResource("1_s8q4d")
+AreaNode = NodePath("Area2D")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -19.0
@@ -19,4 +19,10 @@ offset_bottom = 20.0
 color = Color(0.101961, 0.964706, 0.168627, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fpv2u")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_fpv2u")

@@ -4,19 +4,26 @@ using System.Threading.Tasks;
 
 public partial class Ball : RigidBody2D
 {
+    [ExportGroup("Child Nodes")]
+    [Export]
+    public Area2D AreaNode { get; private set; }
     public override void _Ready()
     {
-        BodyEntered += HandlePlatformDisapearence;
+        AreaNode.BodyEntered += HandlePlatformDisapearence;
     }
 
-    private void HandlePlatformDisapearence(Node body)
+    private async void HandlePlatformDisapearence(Node body)
     {
-        // if (body is AnimatableBody2D platform)
-        // {
-        //     await Task.Delay(1000);
-        //     platform.QueueFree();
-        // }
-        GD.Print(body.Name);
+        GD.Print("Called");
+        if (body is Platform platform)
+        {
+            GD.Print("Before await");
+            await ToSignal(GetTree().CreateTimer(1.0f), Timer.SignalName.Timeout);
+            GD.Print("After await");
+
+            platform.QueueFree();
+        }
+        GD.Print($"Body Name: {body.Name}");
     }
 
 }
