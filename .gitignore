@@ -1,3 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
 /Builds
+Ping Ping.csproj.old
+Ping Ping.csproj
